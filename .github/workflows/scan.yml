@@ -9,14 +9,9 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  check-run:
-    name: Check PR run
-    uses: bitwarden/gh-actions/.github/workflows/check-run.yml@main
-
   sast:
     name: SAST scan
     runs-on: ubuntu-22.04
-    needs: check-run
     permissions:
       contents: read
       pull-requests: write
@@ -51,7 +46,6 @@ jobs:
   quality:
     name: Quality scan
     runs-on: ubuntu-22.04
-    needs: check-run
     permissions:
       contents: read
       pull-requests: write
